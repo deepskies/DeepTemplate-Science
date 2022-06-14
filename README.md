@@ -7,7 +7,7 @@ Please consider this as a loose list of things considered "nice to have", and as
 # DeepSkies Science Repo Template 
 Include status links to different outside resources, such as build info, paper info, license, etc. 
 You can select your license from the [choose a license page.](https://choosealicense.com/licenses/), and then change the name of the license in the badge and link included. 
-For workflows, change the name of the repo listed in the img.shields link to point to your repo and worldflows.
+For workflows, change the name of the repo listed in the img.shields link to point to your repo and workflows.
 
 [![status](https://img.shields.io/badge/arXiv-000.000-red)](arxiv link if applicable)
 [![status](https://img.shields.io/badge/PyPi-0.0.0.0-blue)](pypi link if applicable)
