@@ -19,9 +19,9 @@ Your overview should contain a brief summary of the project, and figures and exa
 
 ## Installation 
 Information about install. 
-Please consider using the pip distribution workflow included in this template to streamline install for other users. 
+We recommend publishing to pypi using a poetry package management system (described below) but we also provide instructions for using python virtual environments and showyourwork with conda integration. 
 
-Example: 
+Example of what your installation instructions should look like: 
 
 To install with pip: 
 > pip install git+https://github.com/DeepSkies/science_template.git
@@ -35,10 +35,79 @@ Or on windows with
 Verify installation is functional is all tests are passing
 > pytest
 
-Additionally, include how to install from source (via git clone)
+Additionally, include how to install from source (via git clone) and associated setup. 
+
+### poetry 
+Poetry is our recommended method of handling a package environment as publishing and building is handled by a toml file that handles all possibly conflicting dependencies. 
+Full docs can be found [here](https://python-poetry.org/docs/basic-usage/).
+
+Install instructions: 
+
+Add poetry to your python install 
+> pip install poetry
+
+Install the pyproject file
+> poetry install 
+
+To add another package to your environment
+> poetry add (package name)
+
+To run within your environment 
+>poetry run (file).py
+
+If you wish to start from scratch: 
+> pip install poetry
+> poetry init
+
+### virtual environment
+At the bare minimum, project dependencies must be contained and strictly defined and shared for replication purposes. 
+The easiest way to do this is to use a python virtual environment. 
+Full instructions are found [here.](https://docs.python.org/3/library/venv.html)
+
+To initialize an environment:
+> python3 -m venv /path/to/env
+> 
+To activate it: 
+Linux and Mac: 
+> source venv/bin/activate
+> 
+Windows: 
+> venv\Scripts\activate.bat
+
+And use pip as normal to install packages. 
+
+In order to produce a file to share with your version of dependencies, produce a requirements.txt. 
+This can later be installed in full to a new system using `pip install -r requirements.txt`. 
+Note that this does not manage any versioning conflicts and can very quickly become depreciated. 
+> pip freeze >requirements.txt 
+
+### show your work with conda
+We also supply a ["show your work"](https://github.com/showyourwork/showyourwork) workflow to use with a conda venv which can compile the example tex file in `DeepTemplate-Science/src/tex/ms.tex`
+
+To execute this workflow: 
+>showyourwork build
+
+This will build your project and install the conda venv associated with the project (or just compile the document if you haven't been using it) and output the document as a pdf. 
+If you would like to integrate with overleaf to push your work remotely, you can do that by adding the following lines to your showyourwork.yml file
+> 
+>   overleaf: 
+> 
+>       id: URL identifying your project
+>       push:
+>           - src/tex/figures
+>           - src/tex/output
+>       pull:
+>           - src/tex/ms.tex
+>           - src/tex/bib.bib
+
+And adding the system variables `$OVERLEAF_EMAIL` and `$OVERLEAF_PASSWORD` with your credentials. 
+For more information please see the [showyourwork page on the topic](https://show-your.work/en/latest/overleaf/).
+
+
 
 ## Quickstart
 Description of the immediate steps to replicate your results, pointing to a script with cli execution. 
+You can also point to a notebook if your results are highly visual and showing plots in line with code is desired.
 
 Example: 
 
